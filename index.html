@@ -10,8 +10,6 @@
 body {
     margin:0;
     padding:0;
-    bounds:[-180,13,180,72];
-    center:[-98,38,4];
 }
 #map {
     position:absolute;
@@ -30,7 +28,7 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxD
 var map = L.mapbox.map('map').setView([38.00, -98.00], 4);
 
 // top layer
-L.mapbox.tileLayer('fcc.a23uwhfr').addTo(map);
+L.mapbox.tileLayer('fcc.a23uwhfr').setZIndex(1000).addTo(map);
 
 // layer controls
 L.control.layers({
