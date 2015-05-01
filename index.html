@@ -29,15 +29,15 @@ body {
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
 var map = L.mapbox.map('map').setView([38.00, -98.00], 4);
 
+// top layer
+L.mapbox.tileLayer('fcc.a23uwhfr').addTo(map);
+
 // layer controls
 L.control.layers({
     'Street Map': L.mapbox.tileLayer('fcc.k74ed5ge').addTo(map),
     'Satellite Map': L.mapbox.tileLayer('fcc.k74d7n0g'),
     'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
 }).addTo(map);
-
-// top layer
-L.mapbox.tileLayer('fcc.a23uwhfr').addTo(map);
 
 </script>
 </body>
