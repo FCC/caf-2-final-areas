@@ -36,11 +36,8 @@ L.control.layers({
     'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
 }).addTo(map);
 
-// add layer groups to layer switcher control
-var topPane = map._createPane('leaflet-top-pane', map.getPanes().mapPane);
-var topLayer = L.mapbox.tileLayer('fcc.a23uwhfr').addTo(map);
-topPane.appendChild(topLayer.getContainer());
-    topLayer.setZIndex(7);
+// top layer
+L.mapbox.tileLayer('fcc.a23uwhfr').addTo(map);
 
 </script>
 </body>
