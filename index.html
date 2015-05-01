@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>E-rate Map Test</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+<style>
+body {
+    margin:0;
+    padding:0;
+    bounds:[-180,13,180,72];
+    center:[-98,38,4];
+}
+#map {
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
+var map = L.mapbox.map('map').setView([38.00, -98.00], 4);
+
+// layer controls
+L.control.layers({
+    'Satellite Map': L.mapbox.tileLayer('fcc.k74d7n0g').addTo(map),
+    'Street Map': L.mapbox.tileLayer('fcc.k74ed5ge').addTo(map),
+    'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
+}).addTo(map);
+
+// add layer groups to layer switcher control
+var topPane = map._createPane('leaflet-top-pane', map.getPanes().mapPane);
+var topLayer = L.mapbox.tileLayer('fcc.a23uwhfr').addTo(map);
+topPane.appendChild(topLayer.getContainer());
+    topLayer.setZIndex(7);
+
+</script>
+</body>
+</html>
