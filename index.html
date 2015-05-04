@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>E-rate Map Test</title>
+<title>CAF-2 Final Areas Map</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
@@ -17,11 +17,64 @@ body {
     bottom:0;
     width:100%;
 }
+	.legend .legend-title {
+		text-align: left;
+		margin-bottom: 5px;
+		font-weight: bold;
+		font-size: 90%;
+		}
+	.legend .legend-scale ul {
+		margin: 0;
+		margin-bottom: 5px;
+		padding: 0;
+		float: left;
+		list-style: none;
+		}
+	.legend .legend-scale ul li {
+		font-size: 80%;
+		list-style: none;
+		margin-left: 0;
+		line-height: 18px;
+		margin-bottom: 2px;
+		}
+	.legend ul.legend-labels li span {
+		display: block;
+		float: left;
+		height: 16px;
+		width: 30px;
+		margin-right: 5px;
+		margin-left: 0;
+		border: 1px solid #999;
+		}
+	.legend .legend-source {
+		font-size: 70%;
+		color: #999;
+		clear: both;
+		}
+	.legend a {
+		color: #777;
+		}
+
 </style>
 </head>
 
 <body>
 <div id="map"></div>
+
+<div id='legend-content' style='display: none;'>
+<div class='legend'>
+<div class='legend-title'>Connect America Phase II Offer</div>
+<div class='legend-scale'>
+	<ul class='legend-labels'>
+		<li><span style='background:#88B99C;'></span>Offer Made</li>
+		<li><span style='background:#E09392;'></span>Ineligible Above EHCT</li>
+		<li><span style='background:#E4D094;'></span>Ineligible Below Benchmark</li>
+		<li><span style='background:#C3F098;'></span>Ineligible (Between?)</li>
+		<li><span style='background:#5AA4A7;'></span>Elected Frozen</li>
+	</ul>
+</div>
+</div>
+</div>
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
@@ -35,10 +88,12 @@ L.control.layers({
     'Street Map': L.mapbox.tileLayer('fcc.k74ed5ge').addTo(map),
     'Satellite Map': L.mapbox.tileLayer('fcc.k74d7n0g'),
     'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
-}).addTo(map);
+	}, null, {position: 'topleft'}).addTo(map);
 
 // legend
-L.control({position: 'bottomright'}).addTo(map);
+map.legendControl
+	.addLegend(document.getElementById('legend-content').innerHTML)
+	.setPosition('bottomleft');
 
 // add interactive elements
 var gridlayer = L.mapbox.gridLayer('fcc.o1ffm5nq');
