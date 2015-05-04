@@ -27,15 +27,24 @@ body {
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
 var map = L.mapbox.map('map').setView([38.00, -98.00], 4);
 
-// top layer
-L.mapbox.tileLayer('fcc.a23uwhfr').setZIndex(1000).addTo(map);
+// top layer (always on)
+L.mapbox.tileLayer('fcc.o1ffm5nq').setZIndex(1000).addTo(map);
 
-// layer controls
+// basemap layer controls
 L.control.layers({
     'Street Map': L.mapbox.tileLayer('fcc.k74ed5ge').addTo(map),
     'Satellite Map': L.mapbox.tileLayer('fcc.k74d7n0g'),
     'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
 }).addTo(map);
+
+// legend
+L.control({position: 'bottomright'}).addTo(map);
+
+// add interactive elements
+var gridlayer = L.mapbox.gridLayer('fcc.o1ffm5nq');
+map.addLayer(gridlayer)
+map.addControl(L.mapbox.gridControl(gridlayer, {follow: true}));
+
 
 </script>
 </body>
