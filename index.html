@@ -12,20 +12,19 @@
 <body>
 <div id="map"></div>
 
-
-<div id='legend-content' style='display: none;'>
-<div class='legend'>
-<div class='legend-title'>Connect America Phase II Offer</div>
-<div class='legend-scale'>
-	<ul class='legend-labels'>
-		<li><span style='background:#88B99C;'></span>Offer Made</li>
-		<li><span style='background:#E09392;'></span>Ineligible Above EHCT</li>
-		<li><span style='background:#E4D094;'></span>Ineligible Below Benchmark</li>
-		<li><span style='background:#C3F098;'></span>Ineligible (Between?)</li>
-		<li><span style='background:#5AA4A7;'></span>Elected Frozen</li>
-	</ul>
-</div>
-</div>
+    <div id='legend-content' style='display: none;'>
+    <div class='legend'>
+    <div class='legend-title'>Connect America Phase II Offer</div>
+    <div class='legend-scale'>
+        <ul class='legend-labels'>
+            <li><span style='background:#88B99C;'></span>Offer Made</li>
+            <li><span style='background:#E09392;'></span>Ineligible Above EHCT</li>
+            <li><span style='background:#E4D094;'></span>Ineligible Below Benchmark</li>
+            <li><span style='background:#C3F098;'></span>Ineligible (Between?)</li>
+            <li><span style='background:#5AA4A7;'></span>Elected Frozen</li>
+        </ul>
+    </div>
+    </div>
 
 </div>
 
@@ -43,26 +42,14 @@ L.control.layers({
     'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
 	}, null, {position: 'topleft'}).addTo(map);
 
-// legend location and controls to show/hide
+// legend location
 map.legendControl
 	.addLegend(document.getElementById('legend-content').innerHTML)
 	.setPosition('bottomleft');
 
-$('.btn-legend').click(function() {
-    $(this).hide();
-    $('.legend').show('fast');
-});
-
-$('.btn-closeLegend').click(function() {
-    $('.legend').hide('fast');
-    $('.btn-legend').show();
-});
-
-
 // add interactive elements
-var gridlayer = L.mapbox.gridLayer('fcc.o1ffm5nq');
-map.addLayer(gridlayer)
-map.addControl(L.mapbox.gridControl(gridlayer, {follow: true}));
+var gridlayer = L.mapbox.gridLayer('fcc.o1ffm5nq').addTo(map);
+var gridControl = L.mapbox.gridControl(gridlayer).addTo(map);
 
 
 </script>
