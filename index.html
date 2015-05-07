@@ -6,60 +6,12 @@
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
-<style>
-body {
-    margin:0;
-    padding:0;
-}
-#map {
-    position:absolute;
-    top:0;
-    bottom:0;
-    width:100%;
-}
-	.legend .legend-title {
-		text-align: left;
-		margin-bottom: 5px;
-		font-weight: bold;
-		font-size: 90%;
-		}
-	.legend .legend-scale ul {
-		margin: 0;
-		margin-bottom: 5px;
-		padding: 0;
-		float: left;
-		list-style: none;
-		}
-	.legend .legend-scale ul li {
-		font-size: 80%;
-		list-style: none;
-		margin-left: 0;
-		line-height: 18px;
-		margin-bottom: 2px;
-		}
-	.legend ul.legend-labels li span {
-		display: block;
-		float: left;
-		height: 16px;
-		width: 30px;
-		margin-right: 5px;
-		margin-left: 0;
-		border: 1px solid #999;
-		}
-	.legend .legend-source {
-		font-size: 70%;
-		color: #999;
-		clear: both;
-		}
-	.legend a {
-		color: #777;
-		}
-
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <div id="map"></div>
+
 
 <div id='legend-content' style='display: none;'>
 <div class='legend'>
@@ -74,6 +26,7 @@ body {
 	</ul>
 </div>
 </div>
+
 </div>
 
 <script>
@@ -90,10 +43,21 @@ L.control.layers({
     'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
 	}, null, {position: 'topleft'}).addTo(map);
 
-// legend
+// legend location and controls to show/hide
 map.legendControl
 	.addLegend(document.getElementById('legend-content').innerHTML)
 	.setPosition('bottomleft');
+
+$('.btn-legend').click(function() {
+    $(this).hide();
+    $('.legend').show('fast');
+});
+
+$('.btn-closeLegend').click(function() {
+    $('.legend').hide('fast');
+    $('.btn-legend').show();
+});
+
 
 // add interactive elements
 var gridlayer = L.mapbox.gridLayer('fcc.o1ffm5nq');
