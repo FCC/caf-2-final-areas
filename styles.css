@@ -8,8 +8,8 @@ body {
     bottom:0;
     width:100%;
 }
-	
 
+	
 	.map-legend .legend-title {
 		text-align: left;
 		margin-bottom: 5px;
@@ -24,7 +24,7 @@ body {
 		list-style: none;
 		}
 	.map-legend .legend-scale ul li {
-		font-size: 80%;
+		font-size: 100%;
 		list-style: none;
 		margin-left: 0;
 		line-height: 18px;
