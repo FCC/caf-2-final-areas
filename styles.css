@@ -51,3 +51,11 @@ body {
 		top: -64px; 
 		left: 40px;
 		}
+
+	.map-tooltip { 
+		max-width: none; 
+	}
+
+	.temp-tbl-data td { 
+		white-space: nowrap; 
+	}
