@@ -41,7 +41,10 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxD
 var map = L.mapbox.map('map').setView([38.00, -98.00], 4);
 
 // top layer (always on)
-L.mapbox.tileLayer('fcc.o1ffm5nq').setZIndex(1000).addTo(map);
+L.mapbox.tileLayer('fcc.o1ffm5nq', {
+	maxZoom: 10,
+	minZoom: 3
+}).setZIndex(1000).addTo(map);
 
 // basemap layer controls
 L.control.layers({
