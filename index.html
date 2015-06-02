@@ -26,7 +26,7 @@
     <div class='legend-scale'>
         <ul class='legend-labels'>
             <li><span style='background:#88B99C;'></span>Eligible</li>
-            <li><span style='background:#E09392;'></span>Ineligible - Exceeeds Benchmark</li>
+            <li><span style='background:#E09392;'></span>Ineligible - Exceeds Benchmark</li>
             <li><span style='background:#E4D094;'></span>Ineligible - Below Benchmark</li>
             <li><span style='background:#C3F098;'></span>Other Ineligible</li>
             <li><span style='background:#506AA6;'></span>Elected Frozen</li>
@@ -38,15 +38,26 @@
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
+<<<<<<< HEAD
 var map = L.mapbox.map('map', 'fcc.k74ed5ge', {
                 maxZoom: 10,
                 minZoom: 3
+=======
+var map = L.mapbox.map('map', {
+	maxZoom: 10,
+	minZoom: 3
+>>>>>>> origin/gh-pages
 }).setView([38.00, -98.00], 4);
 
 // top layer (always on)
 L.mapbox.tileLayer('fcc.o1ffm5nq', {
+<<<<<<< HEAD
     maxZoom: 10,
     minZoom: 3
+=======
+	maxZoom: 10,
+	minZoom: 3
+>>>>>>> origin/gh-pages
 }).setZIndex(1000).addTo(map);
 
 // basemap layer controls
