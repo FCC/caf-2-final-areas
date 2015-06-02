@@ -38,7 +38,10 @@
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
-var map = L.mapbox.map('map').setView([38.00, -98.00], 4);
+var map = L.mapbox.map('map', {
+	maxZoom: 10,
+	minZoom: 3
+}).setView([38.00, -98.00], 4);
 
 // top layer (always on)
 L.mapbox.tileLayer('fcc.o1ffm5nq', {
