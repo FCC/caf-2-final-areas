@@ -38,10 +38,12 @@
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg';
-var map = L.mapbox.map('map', 'fcc.k74ed5ge', {
+var map = L.mapbox.map('map', {
 	maxZoom: 13,
 	minZoom: 4
 }).setView([38.00, -98.00], 4);
+
+L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10').addTo(map);
 
 // top layer (always on)
 L.mapbox.tileLayer('fcc.kr8dunmi', {
@@ -51,9 +53,9 @@ L.mapbox.tileLayer('fcc.kr8dunmi', {
 
 // basemap layer controls
 L.control.layers({
-    'Street Map': L.mapbox.tileLayer('fcc.k74ed5ge').addTo(map),
-    'Satellite Map': L.mapbox.tileLayer('fcc.k74d7n0g'),
-    'Terrain Map': L.mapbox.tileLayer('fcc.k74cm3ol')
+    'Street Map': L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10').addTo(map),
+    'Satellite Map': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9'),
+    'Terrain Map':L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11')
 	}, null, {position: 'topleft'}).addTo(map);
 
 // legend location
